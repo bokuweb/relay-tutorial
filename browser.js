@@ -8,6 +8,7 @@ ReactDOM.render(
   <Relay.RootContainer 
      Component={App.Container}
      route={App.queries}
+     renderLoading={() => <div>Loading...</div>}
      onReadyStateChange={res => console.info(res)} />,
   document.getElementById('content')  
 )
