@@ -34,7 +34,12 @@ class Conference extends React.Component {
   }
 }
 
+// The component we need to export is a Relay wrapper around our App component
+// from above. It declares the GraphQL fragments where we list the properties
+// we want to be fetched – eg, user.name, user.widgets.edges, etc
 exports.Container = Relay.createContainer(App, {
+  // The property name here reflects what is added to `this.props` above.
+  // This template string will be parsed by babel-relay-plugin when we browserify.
   initialVariables: {
     userToShow: 2
   },
@@ -56,6 +61,9 @@ exports.Container = Relay.createContainer(App, {
   },
 });
 
+// The Relay root container needs to know what queries will occur at the top
+// level – these configurations are currently called Routes in Relay, but this
+// name is misleading and under review so we don't use it here.
 exports.queries = {
   name: 'ConferenceQueries',
   params: {},
