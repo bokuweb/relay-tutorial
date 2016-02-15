@@ -58,10 +58,10 @@ exports.Container = Relay.createContainer(App, {
 
 exports.queries = {
   name: 'ConferenceQueries',
-  params: {id: 1},
+  params: {},
   queries: {
     // user in this case matches the fragment in the container above
-    user: () => Relay.QL`query { user }`   
+    user: () =>  Relay.QL`query { user }`   
   },
 }
 

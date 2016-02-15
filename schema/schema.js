@@ -96,7 +96,8 @@ module.exports = new GraphQL.GraphQLSchema({
       user: {
         type: userType,
         resolve: function() {
-          return db.getUser(1) 
+          console.log('====schema user resolve ===')
+          return db.getUser(2) 
         },
       },
     },

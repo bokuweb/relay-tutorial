@@ -8,6 +8,6 @@ ReactDOM.render(
   <Relay.RootContainer 
      Component={App.Container}
      route={App.queries}
-     onReadyStateChange={({error}) => { if (error) console.error(error) }} />,
+     onReadyStateChange={res => console.info(res)} />,
   document.getElementById('content')  
 )
