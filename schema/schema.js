@@ -49,6 +49,7 @@ var userType = new GraphQL.GraphQLObjectType({
   isTypeOf: function(obj) { return obj instanceof db.User },
 
   fields: function() {
+    console.log('------------------ fields-----------');
     return {
       id: GraphQLRelay.globalIdField('User'),
       name: {
@@ -72,6 +73,9 @@ var userType = new GraphQL.GraphQLObjectType({
         // The resolve block will complete a query and pass back
         // data for the user id supplied by the arguments we pass in
         resolve: function(user, args) {
+          console.log('------ resolve')
+          console.log(args)
+          console.log(user)
           return GraphQLRelay.connectionFromArray(db.getConferencesByUser(args.userToShow), args)
         },
       },
@@ -91,7 +95,7 @@ module.exports = new GraphQL.GraphQLSchema({
       // Root queries
       user: {
         type: userType,
-        resolve: function() { 
+        resolve: function() {
           return db.getUser(1) 
         },
       },

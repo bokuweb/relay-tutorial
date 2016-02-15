@@ -43,19 +43,25 @@ module.exports = {
   Framework: Framework,
   Conference: Conference,
 
-  getUser: function(id) { 
+  getUser: function(id) {
+    console.log('--------- get user -----------');
+    console.log(id);
     return users.filter(function(user) { 
       return user.id == id 
     })[0] 
   },
 
-  getConference: function(id) { 
+  getConference: function(id) {
+    console.log('--------- get conference -----------');
+    console.log(id);
     return conferences.filter(function(conference) { 
       return conference.id == id 
     })[0] 
   },
 
   getConferencesByUser: function(userId) {
+    console.log('--------- get conference by user -----------');
+    console.log(userId);
     var confs = [];
     conferences.forEach(function(conf) {
       conf.attendees.forEach(function(user) {

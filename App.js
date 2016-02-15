@@ -3,9 +3,10 @@ import Relay from 'react-relay';
 
 class App extends React.Component {
   render() {
+    console.dir(this.props)
     return(
       <div className="container">
-        <h2>{this.props.user.name} Conferences</h2>
+        <h2>{this.props.user.name} Conferencess</h2>
         {this.props.user.conferences.edges.map(edge =>
           <Conference edge={edge} />
         )}
@@ -57,7 +58,7 @@ exports.Container = Relay.createContainer(App, {
 
 exports.queries = {
   name: 'ConferenceQueries',
-  params: {},
+  params: {id: 1},
   queries: {
     // user in this case matches the fragment in the container above
     user: () => Relay.QL`query { user }`   
