@@ -19,7 +19,7 @@ exports.Container = Relay.createContainer(App, {
       fragment on User {
         name(id: $id)
       }
-    `
+    `,
   },
 });
 
@@ -27,7 +27,7 @@ exports.queries = {
   name: 'ConferenceQueries',
   params: {},
   queries: {
-    user: () =>  Relay.QL`query { user }`
+    user: () =>  Relay.QL`query { user }`,
   },
 };
 

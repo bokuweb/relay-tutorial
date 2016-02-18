@@ -14,7 +14,6 @@ const userType = new GraphQL.GraphQLObjectType({
           id: { type: GraphQL.GraphQLInt }
         },
         resolve(_, arg) {
-          console.log(_)
           return db.getUser(arg.id).name;
         }
       },
@@ -30,7 +29,7 @@ module.exports = new GraphQL.GraphQLSchema({
       user: {
         type: userType,
         resolve(parent, args, ast) {
-          return new db.User(0, '');
+          return {};
         },
       },
     },
