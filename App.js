@@ -12,12 +12,12 @@ class App extends React.Component {
 
 exports.Container = Relay.createContainer(App, {
   initialVariables: {
-    userToShow: 2
+    id: 2
   },
   fragments: {
     user: () => Relay.QL`
       fragment on User {
-        name(userToShow: $userToShow)
+        name(id: $id)
       }
     `
   },

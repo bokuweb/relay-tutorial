@@ -4,20 +4,18 @@ const db           = require('./database');
 
 const userType = new GraphQL.GraphQLObjectType({
   name: 'User',
-  isTypeOf(obj) { return obj instanceof db.User },
+  //isTypeOf(obj) { return obj instanceof db.User },
   fields() {
     return {
-      id: GraphQLRelay.globalIdField('User'),
+      //id: GraphQLRelay.globalIdField('User'),
       name: {
         type: GraphQL.GraphQLString,
         args: {
-          userToShow: { type: GraphQL.GraphQLInt }
+          id: { type: GraphQL.GraphQLInt }
         },
-        resolve(a, b) {
-          console.log('<-----')
-          console.log(b)
-          console.log('----->')
-          return 'hoge'
+        resolve(_, arg) {
+          console.log(_)
+          return db.getUser(arg.id).name;
         }
       },
     }
@@ -31,9 +29,8 @@ module.exports = new GraphQL.GraphQLSchema({
     fields: {
       user: {
         type: userType,
-        resolve() {
-          console.log(db.getUser(1))
-          return db.getUser(1)
+        resolve(parent, args, ast) {
+          return new db.User(0, '');
         },
       },
     },

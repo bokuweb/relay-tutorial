@@ -4,15 +4,13 @@ function User(id, name) {
 }
 
 const users = [
-  new User(1, 'Ryan'),
-  new User(2, 'George')
+  new User(1, 'Hoge'),
+  new User(2, 'Fuga')
 ];
 
 module.exports = {
   User,
-  getUser(id) {
-    return users.filter(user => user.id == id)[0]; 
-  },
+  getUser: (id) => users.filter(user => user.id == id)[0],
 }
 
 
