@@ -3,9 +3,9 @@ import Relay from 'react-relay';
 
 class App extends React.Component {
   render() {
-    console.dir(this.props)
+    console.dir(this.props);
     return(
-      <h2>Hello!! {this.props.user.name}</h2>
+      <h2>Hello!! { this.props.comments.name }</h2>
     );
   }
 }
@@ -15,19 +15,27 @@ exports.Container = Relay.createContainer(App, {
     id: 2
   },
   fragments: {
-    user: () => Relay.QL`
-      fragment on User {
+    comments: () => Relay.QL`
+      fragment on Comments {
         name(id: $id)
+        comment
+        hoge {
+          edges {
+            node {
+              name
+}
+}
+        }
       }
     `,
   },
 });
 
 exports.queries = {
-  name: 'ConferenceQueries',
+  name: 'Queries',
   params: {},
   queries: {
-    user: () =>  Relay.QL`query { user }`,
+    comments: () =>  Relay.QL`query { comments }`,
   },
 };
 
